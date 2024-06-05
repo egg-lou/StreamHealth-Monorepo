@@ -1,0 +1,55 @@
+<form [formGroup]="updateForm" (ngSubmit)="updateTransaction()" class="p-10 flex-col gap-4">
+  <h2 class="customColorHeader text mb-4 py-4 text-center text-3xl font-semibold">
+    Update Transaction
+  </h2>
+  <div class="flex flex-col gap-2 p-2">
+    <label for="clientName">Client Name</label>
+    <input id="clientName" formControlName="clientName">
+    <div *ngIf="updateForm.get('clientName')?.invalid" class="error">
+      {{ getErrorMessage('clientName') }}
+    </div>
+
+    <label for="paymentMethod">Payment Method</label>
+    <select id="paymentMethod" formControlName="paymentMethod">
+      <option value="cash">Cash</option>
+      <option value="card">Card</option>
+    </select>
+
+    <label for="discountType">Discount Type</label>
+    <select id="discountType" formControlName="discountType">
+      <option value="none">None</option>
+      <option value="student">Student</option>
+      <option value="pwd">PWD</option>
+      <option value="senior">Senior</option>
+    </select>
+
+    <div formArrayName="products" *ngFor="let product of productForms; let i = index">
+      <div [formGroupName]="i" class="flex">
+        <label for="productId">Product ID</label>
+        <input id="productId" formControlName="productId">
+
+        <label for="quantitySold">Quantity Sold</label>
+        <input id="quantitySold" formControlName="quantitySold">
+
+        <button (click)="removeProduct(i)">Delete</button>
+      </div>
+    </div>
+
+    <button (click)="addProduct()">Add Product</button>
+
+    <div class="flex flex-col p-2">
+      <button
+        type="submit"
+        class="customBtnColor mt-4 rounded-md p-2 font-semibold text-white"
+        matRipple
+        [disabled]="!updateForm.valid"
+        [matRippleCentered]="centered"
+        [matRippleDisabled]="disabled"
+        [matRippleUnbounded]="unbounded"
+        [matRippleRadius]="radius"
+        [matRippleColor]="color">
+        Update Transaction
+      </button>
+    </div>
+  </div>
+</form>

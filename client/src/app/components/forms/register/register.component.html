@@ -1,0 +1,75 @@
+<form
+    class="flex w-full flex-col justify-center gap-6 p-24"
+    (ngSubmit)="onRegister(registerForm)"
+    #registerForm="ngForm">
+    <h2 class="customColorHeader mb-4 text-center text-3xl font-semibold">
+        Create an Account!
+    </h2>
+    <div class="flex flex-col p-2">
+        <label class="text-sm font-semibold">Name</label>
+        <input
+            type="text"
+            name="name"
+            id="name"
+            class="customField"
+            placeholder="Enter your Name"
+            [(ngModel)]="name"
+            required
+            #nameField="ngModel" />
+        <div
+            *ngIf="nameField.invalid && (nameField.touched || submitted)"
+            class="text-red-500">
+            Name is required!
+        </div>
+    </div>
+    <div class="flex flex-col p-2">
+        <label for="username" class="text-sm font-semibold">Username</label>
+        <input
+            type="text"
+            name="username"
+            id="username"
+            class="customField"
+            placeholder="Enter your Username"
+            [(ngModel)]="username"
+            required
+            #usernameField="ngModel" />
+        <div
+            *ngIf="
+                usernameField.invalid && (usernameField.touched || submitted)
+            "
+            class="text-red-500">
+            Username is required!
+        </div>
+    </div>
+    <div class="flex flex-col p-2">
+        <label for="password" class="text-sm font-semibold">Password</label>
+        <input
+            type="password"
+            name="password"
+            id="password"
+            class="customField"
+            placeholder="Enter a Password"
+            [(ngModel)]="password"
+            required
+            #passwordField="ngModel" />
+        <div
+            *ngIf="
+                passwordField.invalid && (passwordField.touched || submitted)
+            "
+            class="text-red-500">
+            Password is required!
+        </div>
+    </div>
+    <div class="flex flex-col p-2">
+        <button
+            type="submit"
+            class="customBtnColor mt-4 rounded-md p-2 font-semibold"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleDisabled]="disabled"
+            [matRippleUnbounded]="unbounded"
+            [matRippleRadius]="radius">
+            Register
+        </button>
+    </div>
+</form>

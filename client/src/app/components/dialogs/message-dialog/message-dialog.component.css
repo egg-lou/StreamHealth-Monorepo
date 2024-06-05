@@ -1,0 +1,17 @@
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.icon-container.success {
+    background-color: green;
+}
+
+.icon-container.error {
+    background-color: red;
+}

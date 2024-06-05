@@ -1,0 +1,30 @@
+<div mat-dialog-content>
+    <div
+        class="flex h-full w-full flex-col items-center justify-center gap-4 px-5">
+        <p
+            [ngClass]="{
+                success: status === 'success',
+                error: status === 'error'
+            }">
+            {{ message }}
+        </p>
+        <div
+            class="icon-container"
+            [ngClass]="{
+                success: status === 'success',
+                error: status === 'error'
+            }">
+            <mat-icon
+                *ngIf="status === 'success'"
+                [ngStyle]="{ color: 'white' }"
+                >check</mat-icon
+            >
+            <mat-icon *ngIf="status === 'error'" [ngStyle]="{ color: 'white' }"
+                >error</mat-icon
+            >
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+</div>

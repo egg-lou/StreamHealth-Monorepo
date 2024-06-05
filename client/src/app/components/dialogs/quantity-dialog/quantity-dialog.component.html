@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Add to cart</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Quantity</mat-label>
+    <input matInput [formControl]="quantityControl" type="number" min="1">
+    <mat-error *ngIf="quantityControl.invalid">Please enter a valid quantity</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-flat-button color="accent" [mat-dialog-close]="quantityControl.value" cdkFocusInitial>Add to cart</button>
+</div>

@@ -1,0 +1,8 @@
+<main class="flex h-[94.1vh] w-full">
+    <app-sidebar />
+    <div class="w-full">
+        <app-profile-container *ngIf="selectedButton === 'profile'"/>
+        <app-pos-container *ngIf="selectedButton === 'pos'" />
+        <app-products-container *ngIf="selectedButton === 'products'" />
+    </div>
+</main>

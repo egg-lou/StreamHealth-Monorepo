@@ -1,0 +1,7 @@
+.onHover {
+    @apply rounded-lg p-2 transition-all duration-300 ease-in-out hover:bg-pink-100;
+}
+
+.selected {
+    @apply bg-pink-100 text-pink-500;
+}

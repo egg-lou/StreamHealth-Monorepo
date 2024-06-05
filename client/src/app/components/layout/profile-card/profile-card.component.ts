@@ -1,0 +1,15 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+    selector: 'app-profile-card',
+    standalone: true,
+    imports: [],
+    templateUrl: './profile-card.component.html',
+    styleUrl: './profile-card.component.css',
+})
+export class ProfileCardComponent {
+    @Input() imgHeight: string = '';
+    @Input() name: string = '';
+    @Input() profession: string = '';
+    @Input() imageUrl: string = '';
+}

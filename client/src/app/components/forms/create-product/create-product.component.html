@@ -1,0 +1,63 @@
+<form
+    [formGroup]="productForm"
+    (ngSubmit)="createProduct()"
+    class="flex flex-col p-10">
+    <h2
+        class="customColorHeader text mb-4 py-4 text-center text-3xl font-semibold">
+        Add a Product!
+    </h2>
+    <div class="flex flex-col gap-2 p-2">
+        <label for="productName">Product Name</label>
+        <input
+            id="productName"
+            formControlName="productName"
+            class="customField" />
+        <div *ngIf="productForm.get('productName')?.invalid" class="error">
+            {{ getErrorMessage('productName') }}
+        </div>
+
+        <label for="productDescription">Product Description</label>
+        <input
+            id="productDescription"
+            formControlName="productDescription"
+            class="customField" />
+        <div
+            *ngIf="productForm.get('productDescription')?.invalid"
+            class="error">
+            {{ getErrorMessage('productDescription') }}
+        </div>
+
+        <label for="productPrice">Product Price</label>
+        <input
+            id="productPrice"
+            formControlName="productPrice"
+            class="customField" />
+        <div *ngIf="productForm.get('productPrice')?.invalid" class="error">
+            {{ getErrorMessage('productPrice') }}
+        </div>
+
+        <label for="productStock">Product Stock</label>
+        <input
+            id="productStock"
+            formControlName="productStock"
+            class="customField" />
+        <div *ngIf="productForm.get('productStock')?.invalid" class="error">
+            {{ getErrorMessage('productStock') }}
+        </div>
+
+        <div class="flex flex-col p-2">
+            <button
+                type="submit"
+                class="customBtnColor mt-4 rounded-md p-2 font-semibold text-white"
+                matRipple
+                [disabled]="!productForm.valid"
+                [matRippleCentered]="centered"
+                [matRippleDisabled]="disabled"
+                [matRippleUnbounded]="unbounded"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+                Create Product
+            </button>
+        </div>
+    </div>
+</form>

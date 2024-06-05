@@ -1,0 +1,26 @@
+.card-top {
+    position: relative;
+    height: 65%;
+    background: rgba(236, 72, 153, 1);
+}
+
+.card-bottom {
+    position: relative;
+    height: 35%;
+}
+
+.name {
+    color: rgba(80, 45, 60, 1);
+}
+
+.profession {
+    color: rgba(125, 86, 102, 1);
+}
+
+.member-img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    object-fit: cover;
+    overflow: visible;
+}

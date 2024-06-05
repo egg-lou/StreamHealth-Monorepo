@@ -1,0 +1,111 @@
+<main class="w-full h-full grid grid-cols-2" style="grid-template-columns: 2fr 1fr;">
+  <div class="flex flex-col px-10 py-8 gap-4 justify-center">
+    <div class=>
+      <label for="search"></label>
+      <input
+        class="customField w-full"
+        type="text"
+        name="search"
+        id="search"
+        placeholder="Search by Product Name"
+        (keyup)="applyFilter($event)" />
+    </div>
+    <div>
+      <div class="w-full h-auto  mt-4 overflow-y-scroll flex flex-col gap-6" >
+          <div *ngFor="let product of products" class="w-full h-auto border-2 p-4 border-pink-600 flex shadow-md rounded-lg justify-center items-center">
+            <div class="flex justify-between w-full border-r-2">
+              <div>
+              <h2 class="customColorHeader font-semibold text-xl">{{ product.productName }}</h2>
+              <p>{{ product.productDescription }}</p>
+              </div>
+              <div class="px-4">
+                <p>Php {{product.productPrice}}</p>
+                <p>Stock: {{product.productStock}}</p>
+              </div>
+            </div>
+            <div class="flex items-center px-4 justify-center">
+              <button mat-flat-button color="accent" [mat-dialog-close]="quantityControl.value" [disabled]="product.productStock === 0"  (click)="openAddQuantityDialog(product)"  cdkFocusInitial> Add </button>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div
+      *ngIf="products.length === 0"
+      class="flex h-auto w-full items-center justify-center bg-white">
+      <h2 class="text-2xl">No Products found!</h2>
+    </div>
+    <div class="flex w-full items-center justify-between">
+      <div class="flex items-center justify-center gap-2">
+        <button
+          *ngFor="let pageNumber of pages"
+          [ngClass]="{
+                        'bg-pink-200 text-pink-500': pageNumber === page
+                    }"
+          (click)="goToPage(pageNumber)"
+          class="rounded-md px-4">
+          {{ pageNumber }}
+        </button>
+      </div>
+      <div class="flex items-center justify-end gap-2">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="previousPage()"
+          [disabled]="page === 1">
+          Previous
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="nextPage()"
+          [disabled]="isLastPage">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="border-pink-600 border-l-2 px-10 py-4 flex flex-col gap-3  justify-center items-center">
+      <div class="border-2 w-full h-[5rem] border-pink-600 rounded-2xl px-4 flex items-center py-2 justify-between">
+          <p class="font-semibold customColorHeader text-3xl">Total: </p>
+           <h3 class="text-[3rem]">{{ payload.totalAmount }}</h3>
+      </div>
+    <div class="flex justify-center items-center gap-3">
+      <label for="clientName"></label>
+      <input id="clientName" placeholder="Client Name" class="customField" [(ngModel)]="payload.clientName" >
+      <mat-form-field class="h-[5.3rem]">
+        <mat-label>Payment Method</mat-label>
+        <select matNativeControl required [(ngModel)]="payload.paymentMethod" >
+          <option value="CARD">Card</option>
+          <option value="CASH">Cash</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field class="h-[5.3rem]">
+        <mat-label>Discount</mat-label>
+        <select matNativeControl required [(ngModel)]="payload.discountType" (change)="applyDiscount()" >
+          <option value="None">None</option>
+          <option value="PWD">PWD</option>
+          <option value="SENIOR">Senior</option>
+        </select>
+      </mat-form-field>
+    </div>
+    <div class="w-full h-[35rem] overflow-y-scroll flex flex-col gap-4 border-2 border-pink-400 rounded-lg px-10 py-4">
+      <div  *ngFor="let cartItem of cartItems; let i = index" >
+          <div class="flex justify-between items-center">
+          <h4 class="text-lg"> {{cartItem.quantity}}x {{cartItem.product.productName}} </h4>
+            <div class="flex gap-2 items-center justify-center">
+            <p>{{cartItem.product.productPrice * cartItem.quantity}}</p>
+              <button (click)="removeFromCart(i)" >
+                <mat-icon fontIcon="close" class="text-red-600"></mat-icon>
+              </button>
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="flex justify-end items-center gap-3 w-full">
+      <button mat-button (click)="clearCartItems()" >Cancel</button>
+      <button mat-flat-button color="accent" (click)="submitTransaction()" >Checkout</button>
+    </div>
+  </div>
+</main>

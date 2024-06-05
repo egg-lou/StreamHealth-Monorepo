@@ -1,0 +1,21 @@
+<nav
+    class="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b-2 bg-transparent bg-white px-10 backdrop-blur">
+    <a href="/">
+        <h1
+            class="bg-gradient-to-r from-pink-700 to-rose-500 bg-clip-text text-xl font-semibold text-transparent">
+            <img
+                src="./assets/streamhealth-logo.png"
+                alt="brandLogo"
+                class="h-[30px]" />
+        </h1>
+    </a>
+
+    <div class="flex items-center justify-center gap-4">
+        <div *ngIf="loggedIn; else notLoggedIn">
+            <app-profile-btn />
+        </div>
+        <ng-template #notLoggedIn>
+            <app-dashboard-btn />
+        </ng-template>
+    </div>
+</nav>

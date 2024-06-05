@@ -1,0 +1,16 @@
+<main
+    class="flex min-h-screen w-full flex-col items-center justify-center gap-8 pb-20">
+    <img src="./assets/ourTeam.svg" alt="ourTeam" />
+    <img src="./assets/meetThePeople.svg" alt="ourTeam" />
+    <div
+        class="mt-20 flex w-[70rem] flex-wrap items-center justify-center gap-20">
+        <div *ngFor="let member of members">
+            <app-profile-card
+                [imgHeight]="member.imgHeight"
+                [name]="member.name"
+                [profession]="member.profession"
+                [imageUrl]="member.imgUrl"
+                class="p-10" />
+        </div>
+    </div>
+</main>

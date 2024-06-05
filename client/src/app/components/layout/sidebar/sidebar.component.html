@@ -1,0 +1,30 @@
+<mat-drawer-container class="h-[100%]">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <div
+            class="flex h-full w-full flex-col items-start justify-start gap-8 p-4">
+            <button
+                [class.selected]="selectedButton === 'profile'"
+                (click)="onButtonClick('profile', profileClick)"
+                class="onHover">
+                Dashboard
+            </button>
+            <button
+                [class.selected]="selectedButton === 'products'"
+                (click)="onButtonClick('products', productsClick)"
+                class="onHover">
+                Products
+            </button>
+            <button
+                [class.selected]="selectedButton === 'pos'"
+                (click)="onButtonClick('pos', posClick)"
+                class="onHover">
+                POS
+            </button>
+        </div>
+    </mat-drawer>
+    <div class="flex h-screen items-start justify-start bg-pink-300">
+        <button mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </div>
+</mat-drawer-container>

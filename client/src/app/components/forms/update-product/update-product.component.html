@@ -1,0 +1,63 @@
+<form
+    [formGroup]="updateForm"
+    (ngSubmit)="updateProduct()"
+    class="flex flex-col p-10">
+    <h2
+        class="customColorHeader text mb-4 py-4 text-center text-3xl font-semibold">
+        Update Product
+    </h2>
+    <div class="flex flex-col gap-2 p-2">
+        <label for="productName">Product Name</label>
+        <input
+            id="productName"
+            formControlName="productName"
+            class="customField" />
+        <div *ngIf="updateForm.get('productName')?.invalid" class="error">
+            {{ getErrorMessage('productName') }}
+        </div>
+
+        <label for="productDescription">Product Description</label>
+        <input
+            id="productDescription"
+            formControlName="productDescription"
+            class="customField" />
+        <div
+            *ngIf="updateForm.get('productDescription')?.invalid"
+            class="error">
+            {{ getErrorMessage('productDescription') }}
+        </div>
+
+        <label for="productPrice">Product Price</label>
+        <input
+            id="productPrice"
+            formControlName="productPrice"
+            class="customField" />
+        <div *ngIf="updateForm.get('productPrice')?.invalid" class="error">
+            {{ getErrorMessage('productPrice') }}
+        </div>
+
+        <label for="productStock">Product Stock</label>
+        <input
+            id="productStock"
+            formControlName="productStock"
+            class="customField" />
+        <div *ngIf="updateForm.get('productStock')?.invalid" class="error">
+            {{ getErrorMessage('productStock') }}
+        </div>
+
+        <div class="flex flex-col p-2">
+            <button
+                type="submit"
+                class="customBtnColor mt-4 rounded-md p-2 font-semibold text-white"
+                matRipple
+                [disabled]="!updateForm.valid"
+                [matRippleCentered]="centered"
+                [matRippleDisabled]="disabled"
+                [matRippleUnbounded]="unbounded"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+                Update Product
+            </button>
+        </div>
+    </div>
+</form>

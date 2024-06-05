@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+}
+
+/* The emerging W3C standard that is currently Firefox only */
+* {
+    scrollbar-width: none;
+    scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
+    box-sizing: border-box;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 0;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.7);
+    border-radius: 20px;
+    border: 3px solid transparent;
+}
+
+.customField {
+    @apply rounded-sm border-b border-pink-600  bg-transparent p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-pink-500;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.customColorHeader {
+    @apply bg-gradient-to-r from-pink-700 to-rose-500 bg-clip-text text-transparent;
+}
+
+.customColor {
+    @apply bg-gradient-to-b from-purple-50 to-fuchsia-100;
+}
+
+.customBtnColor {
+    @apply bg-gradient-to-r from-pink-700 to-rose-500  text-white;
+}
+
+.primary {
+    background: rgba(190, 24, 93, 1);
+}
+.secondary {
+    background: rgba(244, 67, 54, 1);
+}
+
+.pink {
+    color: rgba(233, 91, 150, 1);
+}
