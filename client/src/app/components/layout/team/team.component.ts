@@ -26,19 +26,19 @@ export class TeamComponent {
         {
             name: 'Jessica Erasmo',
             imgUrl: '../assets/members/Erasmo.png',
-            profession: 'Frontend Developer',
+            profession: 'Frontend Engineer',
             imgHeight: '84.9%',
         },
         {
             name: 'Rafael Louie Miguel',
             imgUrl: '../assets/members/Miguel.png',
-            profession: 'Backend Developer',
+            profession: 'Backend Engineer',
             imgHeight: '77.3%',
         },
         {
             name: 'Maria Claire Reyes',
             imgUrl: '../assets/members/Reyes.png',
-            profession: 'Frontend Developer',
+            profession: 'Frontend Engineer',
             imgHeight: '79.5%',
         },
     ];
