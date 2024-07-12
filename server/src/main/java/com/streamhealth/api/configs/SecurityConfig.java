@@ -32,7 +32,10 @@ public class SecurityConfig {
         );
 
         Set<String> postEndpoints = Set.of(
-                "/api/v1/product/add_product",
+                "/api/v1/product/add_product"
+        );
+
+        Set<String> authEndpoints = Set.of(
                 "/api/v1/auth/register",
                 "/api/v1/auth/login"
         );
@@ -52,19 +55,23 @@ public class SecurityConfig {
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> {
                     for (String endpoint : getEndpoints) {
-                        requests.requestMatchers(HttpMethod.GET, endpoint).permitAll();
+                        requests.requestMatchers(HttpMethod.GET, endpoint).authenticated();
                     }
 
                     for (String endpoint : postEndpoints) {
-                        requests.requestMatchers(HttpMethod.POST, endpoint).permitAll();
+                        requests.requestMatchers(HttpMethod.POST, endpoint).authenticated();
                     }
 
                     for (String endpoint : deleteEndpoints) {
-                        requests.requestMatchers(HttpMethod.DELETE, endpoint).permitAll();
+                        requests.requestMatchers(HttpMethod.DELETE, endpoint).authenticated();
                     }
 
                     for (String endpoint : putEndpoints) {
-                        requests.requestMatchers(HttpMethod.PUT, endpoint).permitAll();
+                        requests.requestMatchers(HttpMethod.PUT, endpoint).authenticated();
+                    }
+
+                    for (String endpoint : authEndpoints) {
+                        requests.requestMatchers(HttpMethod.POST, endpoint).permitAll();
                     }
 
                     requests.anyRequest().authenticated();
